@@ -4,17 +4,17 @@
 #include "ListaSequencialEstatica.h"
 
 int main() {
-    // VariÃ¡vel inteira auxiliar
+    // Variável inteira auxiliar
     int varAux = 0;
 
-    // Declarando a estrutura para obter o retorno das informaÃ§Ãµes
+    // Declarando a estrutura para obter o retorno das informações
     struct aluno alunoRetorno;
 
     Lista* listaDeAlunos;
 
     listaDeAlunos = criar_lista();
 
-    // InserÃ§Ã£o de dados
+    // Inserção de dados
     listaDeAlunos->dadosAluno[0].numeroMatricula = 1;
     strcpy(listaDeAlunos->dadosAluno[0].nome, "Rodrigo Moreira Baptista");
     listaDeAlunos->dadosAluno[0].nota01 = 7;
@@ -25,11 +25,11 @@ int main() {
 
     // Verificando o tamanho da lista
     varAux = tamanho_da_lista(listaDeAlunos);
-    printf("%d\n", varAux);
+    printf("Tamanho da lista: %d\n", varAux);
 
     //Busca de dados pela nota03
     varAux = buscar_por_conteudo_na_lista(listaDeAlunos, 1, &alunoRetorno);
-    printf("%.1f\n", alunoRetorno.nota03);
+    printf("Nota 03 do aluno: %.1f\n", alunoRetorno.nota03);
 
     return 0;
 }

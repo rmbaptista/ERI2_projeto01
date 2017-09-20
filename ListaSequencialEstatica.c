@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <ListaSequencialEstatica.h>
+#include "ListaSequencialEstatica.h"
 
 Lista* criar_lista() {
     Lista* li;
-    
+
     li = (Lista*)malloc(sizeof(struct lista));
 
-    if(li != null)
+    if(li != NULL)
         li->qtde = 0;
 
     return li;
@@ -18,16 +18,16 @@ void liberar_lista(Lista* li) {
 }
 
 int tamanho_da_lista(Lista *li) {
-    if(li == null)
+    if(li == NULL)
         return -1;
-    
+
     return li->qtde;
 }
 
 int lista_cheia(Lista *li) {
-    if(li == null)
+    if(li == NULL)
         return -1;
-    
+
     if(li->qtde == MAX)
         return 1;
 
@@ -35,7 +35,7 @@ int lista_cheia(Lista *li) {
 }
 
 int lista_vazia(Lista *li) {
-    if (li == null)
+    if (li == NULL)
         return -1;
 
     if (li->qtde == 0)
@@ -45,7 +45,7 @@ int lista_vazia(Lista *li) {
 }
 
 int inserit_no_inicio_da_lista(Lista *li, struct aluno al) {
-    if(li == null)
+    if(li == NULL)
         return 0;
 
     // Lista cheia
@@ -56,7 +56,8 @@ int inserit_no_inicio_da_lista(Lista *li, struct aluno al) {
     * Deslocando todos os valores uma posição para frente na lista
     * para que o novo valor seja inserido na primeira posição
     */
-    for(int i=li->qtde-1; i>0; i--) {
+    int i = li->qtde-1;
+    for(i; i>0; i--) {
         li->dadosAluno[i+1] = li->dadosAluno[i];
     }
 
@@ -69,9 +70,9 @@ int inserit_no_inicio_da_lista(Lista *li, struct aluno al) {
     return 1;
 }
 
-int inserir_no_final_da_lista(Lista li, struct aluno al) {
+int inserir_no_final_da_lista(Lista* li, struct aluno al) {
     // Lista não existe
-    if(li == null)
+    if(li == NULL)
         return 0;
 
     // Lista cheia
@@ -79,14 +80,14 @@ int inserir_no_final_da_lista(Lista li, struct aluno al) {
         return 0;
 
     // Insere na última posição do array
-    li->dadosAluno[li->qtde] = la;
+    li->dadosAluno[li->qtde] = al;
 
     return 1;
 }
 
-int remover_do_inicio_da_lista(Lista *li) {
+int remover_do_inicio_da_lista(Lista* li) {
     //Verifica se a lista existe, se não existir, retorna 0
-    if(li == null)
+    if(li == NULL)
         return 0;
 
     // Verifica se a lista está vazia. Se estiver retorna 0
@@ -97,7 +98,8 @@ int remover_do_inicio_da_lista(Lista *li) {
     * Move todos os elementos para uma posição anterior da sua atual.
     * Desse modo o primeiro elemento é apagado.
     */
-    for(int i=0; i<li->qtde; i++) {
+    int i = 0;
+    for(i; i<li->qtde-1; i++) {
         li->dadosAluno[i] = li->dadosAluno[i+1];
     }
 
@@ -107,7 +109,7 @@ int remover_do_inicio_da_lista(Lista *li) {
 
 int remover_do_final_da_lista(Lista *li) {
     //Verifica se a lista existe
-    if(li == null)
+    if(li == NULL)
         return 0;
 
     // Verifica se existem elementos na lista que possam ser removidos
@@ -119,7 +121,7 @@ int remover_do_final_da_lista(Lista *li) {
 }
 
 int busca_por_posicao(Lista* li, int pos, struct aluno* al) {
-    if(li == null || pos <= 0 || li->qtde == 0 || pos > li->qtde)
+    if(li == NULL || pos <= 0 || li->qtde == 0 || pos > li->qtde)
         return 0;
 
     // Traz a referência do endereço de memória do aluno naquela posição do array
@@ -129,7 +131,7 @@ int busca_por_posicao(Lista* li, int pos, struct aluno* al) {
 }
 
 int buscar_por_conteudo_na_lista(Lista *li, int numMatr, struct aluno *al) {
-    if(li == null)
+    if(li == NULL)
         return 0;
 
     // Percorre o aray até achar o número da matrícula que está sendo buscado
